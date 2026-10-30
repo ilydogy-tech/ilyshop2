@@ -7,7 +7,7 @@ This package is the application source, not a live deployed shop. Real orders wi
 
 ## 1. Create Supabase project
 1. Create a project at https://supabase.com/ and keep the project URL and publishable/anon key.
-2. Open **SQL Editor → New query**, paste all of `supabase/schema.sql`, and run it.
+2. Open **SQL Editor → New query**, paste all of `supabase/schema.sql`, and run it. This creates and seeds the 14 starter products, including five pastel washi-tape colors, with product codes `IL001` through `IL014`.
 3. In **Authentication → Users**, create the admin user with email/password.
 4. Copy the admin user's UUID. In SQL Editor run:
    ```sql
@@ -43,6 +43,6 @@ This package is the application source, not a live deployed shop. Real orders wi
 
 ## Troubleshooting
 - “Shop not configured”: `config.js` is missing or has placeholder values.
-- Product list empty: add products through admin and confirm the SQL schema was run.
+- Product list empty: run `supabase/schema.sql` in Supabase SQL Editor and confirm `products` has active rows. Without Supabase configuration, the storefront shows a local preview catalog only; checkout is intentionally disabled until the database is configured.
 - Admin login rejected: ensure the Auth user exists and its UUID was inserted into `public.shop_admins`.
 - RLS error: re-run the SQL script or inspect Supabase **Logs → Postgres API**.
